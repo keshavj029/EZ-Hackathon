@@ -1,0 +1,63 @@
+{
+    "formal": {
+      "description": "A professional and polished writing style. Typically used for business, academic, or technical content.",
+      "guidelines": [
+        "Use a sophisticated and neutral tone.",
+        "Avoid contractions (use 'do not' instead of 'don't').",
+        "Write in complete sentences and use proper punctuation.",
+        "Avoid colloquial expressions and slang.",
+        "Provide detailed explanations and cite any data or references used."
+      ]
+    },
+    "casual": {
+      "description": "A relaxed and friendly writing style. Often used for personal blogs, lifestyle content, or informal business communication.",
+      "guidelines": [
+        "Use a conversational tone and contractions.",
+        "Keep sentences short and punchy.",
+        "Feel free to use slang, idioms, and casual expressions.",
+        "Inject personality and humor into the content where appropriate.",
+        "Keep it light and approachable."
+      ]
+    },
+    "technical": {
+      "description": "A precise and informative writing style. Commonly used for instructional content, technical documentation, and IT-related blogs.",
+      "guidelines": [
+        "Use clear, concise language and avoid ambiguity.",
+        "Explain complex ideas in an easy-to-understand way without oversimplifying.",
+        "Use specific terminology relevant to the industry.",
+        "Focus on accuracy and include step-by-step explanations if necessary.",
+        "Avoid unnecessary jargon, unless essential to the subject matter."
+      ]
+    },
+    "authoritative": {
+      "description": "A confident and commanding writing style that establishes expertise and credibility in a subject.",
+      "guidelines": [
+        "Write with confidence, avoiding words like 'maybe' or 'possibly'.",
+        "Use strong, active verbs and direct language.",
+        "Support claims with evidence and data.",
+        "Focus on establishing trust and authority.",
+        "Address the reader directly to create a sense of expertise."
+      ]
+    },
+    "humorous": {
+      "description": "A fun and engaging writing style, meant to entertain while informing.",
+      "guidelines": [
+        "Inject humor into the content but stay on topic.",
+        "Use witty remarks, puns, or light-hearted metaphors.",
+        "Keep the tone playful but ensure the information remains accurate.",
+        "Avoid humor that might be inappropriate or offensive.",
+        "Be casual and approachable, keeping sentences short and engaging."
+      ]
+    },
+    "storytelling": {
+      "description": "A narrative-driven writing style, often used to build emotional engagement.",
+      "guidelines": [
+        "Start with a hook that captures attention.",
+        "Use a narrative structure, with a beginning, middle, and end.",
+        "Engage the reader with relatable anecdotes and stories.",
+        "Include vivid descriptions and sensory details.",
+        "Build a connection by weaving emotions into the content."
+      ]
+    }
+  }
+  

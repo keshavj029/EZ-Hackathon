@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Generator</title>
+</head>
+<body>
+    <form id="blog-form">
+        <label for="topic">Blog Topic:</label>
+        <input type="text" id="topic" name="topic" required><br><br>
+        
+        <label for="style">Writing Style:</label>
+        <select id="style" name="style" required>
+            <option value="formal">Formal</option>
+            <option value="casual">Casual</option>
+            <option value="technical">Technical</option>
+            <option value="authoritative">Authoritative</option>
+            <option value="humorous">Humorous</option>
+            <option value="storytelling">Storytelling</option>
+        </select><br><br>
+        
+        <label for="blog-type">Blog Type:</label>
+        <input type="text" id="blog-type" name="type" placeholder="e.g., how-to, listicle, news article" required><br><br>
+        
+        <label for="terminology">Upload Custom Terminology (Optional):</label>
+        <input type="file" id="terminology" name="terminology"><br><br>
+        
+        <button type="submit">Generate Blog</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('blog-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let formData = new FormData(this);
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/generate', true);
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    let response = JSON.parse(xhr.responseText);
+                    if (response.error) {
+                        document.getElementById('result').innerHTML = `<p>Error: ${response.error}</p>`;
+                    } else {
+                        document.getElementById('result').innerHTML = `
+                            <h2>Generated Blog Content</h2>
+                            <p>${response.content.replace(/\n/g, '<br>')}</p>
+                            <h3>Meta Description</h3>
+                            <p>${response.meta_description}</p>
+                            <h3>Title</h3>
+                            <p>${response.title}</p>
+                        `;
+                    }
+                } else {
+                    document.getElementById('result').innerHTML = `<p>Error: Unable to generate blog</p>`;
+                }
+            };
+
+            xhr.onerror = function () {
+                document.getElementById('result').innerHTML = `<p>Error: Request failed</p>`;
+            };
+
+            // Convert FormData to plain object for JSON serialization
+            let data = {
+                topic: formData.get('topic'),
+                style: formData.get('style'),
+                type: formData.get('type')
+            };
+
+            // If a file is selected, handle file upload separately
+            if (formData.get('terminology')) {
+                let file = formData.get('terminology');
+                let fileReader = new FileReader();
+                
+                fileReader.onload = function () {
+                    // Append file data as base64 to the JSON data
+                    data.terminology = fileReader.result.split(',')[1]; // Base64 encoded file content
+                    xhr.send(JSON.stringify(data));
+                };
+                
+                fileReader.readAsDataURL(file);
+            } else {
+                xhr.send(JSON.stringify(data));
+            }
+        });
+    </script>
+</body>
+</html>
